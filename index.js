@@ -4,16 +4,30 @@
 
 // Create a function that returns the maximum number of ice cream bars the boy can buy with his coins
 
-const maxIceCream = (array, coins) => {
+const maxIceCream = (costs, coins) => {
   //Write code here
-  let count = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] <= coins) {
-      coins = coins - array[i];
-      count++;
+  var array = [];
+  var sum = 0;
+
+  console.log(costs);
+
+  costs.sort();
+
+  console.log(costs);
+  costs.sort(function(a, b) {
+    return a - b;
+  });
+
+  console.log(costs);
+  for (let i = 0; i < costs.length; i++) {
+    sum = sum + costs[i];
+    if (sum <= coins) {
+      array.push(i);
     }
   }
-  return count;
+
+  console.log(array);
+  return array.length;
 };
 
 // Example 1:
