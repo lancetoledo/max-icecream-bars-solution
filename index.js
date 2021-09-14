@@ -10,10 +10,11 @@ const maxIceCream = (costs, coins) => {
   var sum = 0;
 
   console.log(costs);
-
+  // Normal sort method doesn't sort it by ascending order just by the 1st number in the integer
   costs.sort();
-
   console.log(costs);
+
+  // This sorts the array properly by ascending order (least to greatest)
   costs.sort(function(a, b) {
     return a - b;
   });
@@ -39,3 +40,18 @@ const maxIceCream = (costs, coins) => {
 // Input: costs = [10,6,8,7,7,8], coins = 5
 // Output: 0
 // The boy cannot afford any of the ice cream bars.
+
+function sortAlg(array) {
+  let copy = [...array];
+  let value = 0;
+  for (let i = 0; i < copy.length; i++) {
+    for (let j = i + 1; j < copy.length; j++) {
+      if (copy[i] > copy[j]) {
+        value = copy[j];
+        copy[j] = copy[i];
+        copy[i] = value;
+      }
+    }
+  }
+  return copy;
+}
